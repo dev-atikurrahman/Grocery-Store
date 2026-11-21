@@ -1,4 +1,4 @@
-package com.atik.grocerystore.core.data.preferences
+package com.atik.grocerystore.feature.auth.data.preferences
 
 import com.atik.grocerystore.ui.theme.ThemeMode
 import kotlinx.coroutines.flow.Flow

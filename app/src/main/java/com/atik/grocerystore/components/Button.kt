@@ -1,0 +1,154 @@
+package com.atik.grocerystore.components
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+
+private val ButtonShape = RoundedCornerShape(percent = 100)
+private val AuthBtnShape = RoundedCornerShape(percent = 25)
+
+@Composable
+fun OnboardingButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    containerColor: Color,
+    contentColor: Color,
+    shape: Shape = ButtonShape,
+    contentPadding: PaddingValues = PaddingValues(horizontal = 28.dp, vertical = 12.dp)
+) {
+    Button(
+        onClick = onClick,
+        enabled = enabled,
+        shape = shape,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = containerColor,
+            contentColor = contentColor,
+            disabledContainerColor = containerColor.copy(alpha = 0.5f),
+            disabledContentColor = contentColor.copy(alpha = 0.7f),
+        ),
+        contentPadding = contentPadding,
+        modifier = modifier,
+    ) {
+        Text(
+            text = text,
+            color = contentColor,
+            style = TextStyle(
+                fontSize = 12.sp,
+                fontWeight = FontWeight.SemiBold,
+                letterSpacing = 1.sp
+            )
+        )
+    }
+}
+
+@Composable
+fun AuthButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    containerColor: Color = MaterialTheme.colorScheme.primary,
+    contentColor: Color = MaterialTheme.colorScheme.onPrimary,
+    shape: Shape = AuthBtnShape,
+    contentPadding: PaddingValues = PaddingValues(horizontal = 28.dp, vertical = 12.dp)
+) {
+    val currentContentColor = if (enabled) contentColor else contentColor.copy(alpha = 0.6f)
+
+    Button(
+        onClick = onClick,
+        enabled = enabled,
+        shape = shape,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = containerColor,
+            contentColor = contentColor,
+            disabledContainerColor = containerColor.copy(alpha = 0.5f),
+            disabledContentColor = contentColor.copy(alpha = 0.6f),
+        ),
+        contentPadding = contentPadding,
+        modifier = modifier
+            .fillMaxWidth()
+            .height(56.dp)
+    ) {
+        ButtonText(text = text, color = currentContentColor)
+    }
+}
+
+@Composable
+fun AppButton1(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    containerColor: Color = MaterialTheme.colorScheme.primary,
+    contentColor: Color = MaterialTheme.colorScheme.onPrimary,
+    shape: Shape = AuthBtnShape,
+    contentPadding: PaddingValues = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
+) {
+    val currentContentColor = if (enabled) contentColor else contentColor.copy(alpha = 0.6f)
+
+    TextButton(
+        onClick = onClick,
+        enabled = enabled,
+        shape = shape,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = containerColor,
+            contentColor = contentColor,
+            disabledContainerColor = containerColor.copy(alpha = 0.5f),
+            disabledContentColor = contentColor.copy(alpha = 0.6f),
+        ),
+        contentPadding = contentPadding,
+        modifier = modifier.height(36.dp)
+    ) {
+        DescriptionText(text = text, color = currentContentColor)
+    }
+}
+
+@Composable
+fun SocialIconButton(
+    iconResId: Int,
+    contentDescriptor: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier
+            .size(56.dp)
+            .clip(ButtonShape)
+            .background(MaterialTheme.colorScheme.surfaceContainer)
+            .clickable { onClick() },
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = iconResId),
+            contentDescription = contentDescriptor,
+            modifier = Modifier.size(28.dp)
+        )
+    }
+
+}
+

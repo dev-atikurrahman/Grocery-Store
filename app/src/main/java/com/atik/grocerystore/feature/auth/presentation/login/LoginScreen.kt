@@ -22,10 +22,13 @@ import com.kyant.backdrop.drawBackdrop
 import com.kyant.backdrop.effects.blur
 import com.kyant.backdrop.effects.lens
 import com.kyant.backdrop.effects.vibrancy
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun LoginScreen(
+    onLoginSuccess: () -> Unit,
+    viewModel: LoginViewModel = koinViewModel()
 ) {
     val backdrop = rememberLayerBackdrop()
 
@@ -74,5 +77,4 @@ fun LoginScreen(
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    LoginScreen()
 }
