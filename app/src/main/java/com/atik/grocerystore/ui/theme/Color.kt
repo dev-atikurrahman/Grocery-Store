@@ -65,60 +65,6 @@ val InversePrimaryLight = Color(0xFFC0D0C1)
 
 
 // =====================================================
-// DARK THEME
-// =====================================================
-
-// Primary
-val PrimaryDark = Color(0xFFC0D0C1)
-val OnPrimaryDark = Color(0xFF263329)
-val PrimaryContainerDark = Color(0xFF39483D)
-val OnPrimaryContainerDark = Color(0xFFDCE6DC)
-
-// Secondary
-val SecondaryDark = Color(0xFFBDCCBE)
-val OnSecondaryDark = Color(0xFF293A2D)
-val SecondaryContainerDark = Color(0xFF3D5141)
-val OnSecondaryContainerDark = Color(0xFFD9E7DA)
-
-// Tertiary
-val TertiaryDark = Color(0xFFC2CCD4)
-val OnTertiaryDark = Color(0xFF2E3940)
-val TertiaryContainerDark = Color(0xFF414D55)
-val OnTertiaryContainerDark = Color(0xFFE0E5E9)
-
-// Error
-val ErrorDark = Color(0xFFFFB4AB)
-val OnErrorDark = Color(0xFF690005)
-val ErrorContainerDark = Color(0xFF93000A)
-val OnErrorContainerDark = Color(0xFFFFDAD6)
-
-// Background
-val BackgroundDark = Color(0xFF101713)
-val OnBackgroundDark = Color(0xFFE1E8E0)
-
-// Surface
-val SurfaceDark = Color(0xFF141C17)
-val OnSurfaceDark = Color(0xFFE1E8E0)
-
-val SurfaceVariantDark = Color(0xFF3B453D)
-val OnSurfaceVariantDark = Color(0xFFC0CAC0)
-
-val OutlineDark = Color(0xFF89968A)
-val OutlineVariantDark = Color(0xFF414C43)
-
-// Surface Containers
-val SurfaceContainerLowestDark = Color(0xFF0C120E)
-val SurfaceContainerLowDark = Color(0xFF19221B)
-val SurfaceContainerDark = Color(0xFF1D2720)
-val SurfaceContainerHighDark = Color(0xFF273129)
-val SurfaceContainerHighestDark = Color(0xFF323C34)
-
-// Inverse
-val InverseSurfaceDark = Color(0xFFE1E8E0)
-val InverseOnSurfaceDark = Color(0xFF2E342F)
-val InversePrimaryDark = Color(0xFF536657)
-
-// =====================================================
 // GLASSMORPHISM COLORS
 // =====================================================
 
