@@ -22,8 +22,8 @@ class MainActivity : ComponentActivity() {
     private val userPreferences: UserPreferences by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
         super.onCreate(savedInstanceState)
+        installSplashScreen()
 
         setContent {
             val themeMode by userPreferences.themeMode

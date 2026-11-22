@@ -3,15 +3,10 @@
 
     <style name="Theme.GroceryStore" parent="android:Theme.Material.Light.NoActionBar" />
 
-    <style name="Theme.App.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">
-            @color/primary
-        </item>
-        <item name="windowSplashScreenAnimatedIcon">
-            @drawable/ic_launcher_foreground
-        </item>
-        <item name="postSplashScreenTheme">
-            @android:style/Theme.Material.NoActionBar
-        </item>
+    <style name="SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@android:style/Theme.Material.NoActionBar</item>
     </style>
 </resources>
