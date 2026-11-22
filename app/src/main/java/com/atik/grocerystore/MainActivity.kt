@@ -1,5 +1,6 @@
 package com.atik.grocerystore
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -29,34 +30,16 @@ class MainActivity : ComponentActivity() {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
+        )
+
         splashScreen.setKeepOnScreenCondition {
             splashViewModel.startDestination.value is StartDestination.Login
         }
         setContent {
-            val themeMode by userPreferences.themeMode
-                .collectAsStateWithLifecycle(initialValue = ThemeMode.SYSTEM)
-            val systemDark = isSystemInDarkTheme()
-            val isDark = when (themeMode) {
-                ThemeMode.SYSTEM -> systemDark
-                ThemeMode.LIGHT -> false
-                ThemeMode.DARK -> true
-            }
-
-            DisposableEffect(isDark) {
-                enableEdgeToEdge(
-                    statusBarStyle = SystemBarStyle.auto(
-                        android.graphics.Color.TRANSPARENT,
-                        android.graphics.Color.TRANSPARENT
-                    ) { isDark },
-                    navigationBarStyle = SystemBarStyle.auto(
-                        android.graphics.Color.TRANSPARENT,
-                        android.graphics.Color.TRANSPARENT
-                    ) { isDark }
-                )
-                onDispose {}
-            }
-
-            GroceryStoreTheme(themeMode = themeMode) {
+            GroceryStoreTheme{
                 val startDestination by splashViewModel.startDestination.collectAsStateWithLifecycle()
                 AppNavHost(startDestination = startDestination)
             }

@@ -79,7 +79,5 @@ class UserPreferencesImpl(
             .getOrDefault(ThemeMode.SYSTEM)
     }
 
-    override suspend fun setThemeMode(mode: ThemeMode) {
-        dataStore.edit { it[Keys.THEME_MODE] = mode.name }
-    }
+
 }

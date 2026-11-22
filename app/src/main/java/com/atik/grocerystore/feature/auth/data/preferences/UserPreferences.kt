@@ -13,6 +13,4 @@ interface UserPreferences {
     suspend fun clearSession()
     suspend fun clearSessionIfNotRemembered()
 
-    val themeMode: Flow<ThemeMode>
-    suspend fun setThemeMode(mode: ThemeMode)
 }

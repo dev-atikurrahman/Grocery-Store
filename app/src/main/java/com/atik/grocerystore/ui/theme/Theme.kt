@@ -17,7 +17,7 @@ fun GroceryStoreTheme(
     }
 
     MaterialTheme(
-        colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme,
+        colorScheme = AppColorScheme,
         typography = Typography,
         content = content
     )
