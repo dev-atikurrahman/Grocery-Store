@@ -12,10 +12,3 @@ sealed class Routes (val route: String) {
 
     data object Home : Routes(route = "home")
 }
-
-enum class StartDestination {
-    Loading,
-    Onboarding,
-    Login,
-    Home
-}

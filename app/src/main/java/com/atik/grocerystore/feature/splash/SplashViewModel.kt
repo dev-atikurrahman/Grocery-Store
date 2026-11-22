@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 
@@ -28,18 +29,13 @@ class SplashViewModel(
     init {
         viewModelScope.launch {
             userPreferences.clearSessionIfNotRemembered()
-            combine(
-                userPreferences.isOnboardingCompleted,
-                userPreferences.isLoggedIn,
-            ) { onboardingDone, loggedIn ->
-                when {
-                    !onboardingDone -> StartDestination.Onboarding
-                    !loggedIn -> StartDestination.Login
-                    else -> StartDestination.Home
-                }
-            }.collect { destination ->
-                Log.d(AUTH_TAG, "SplashViewModel: emitting new destination = $destination")
-                _startDestination.value = destination
+            val onBoardingDone = userPreferences.isOnboardingCompleted.first()
+            val loggedIn = userPreferences.isLoggedIn.first()
+
+            _startDestination.value = when {
+                !onBoardingDone -> StartDestination.Onboarding
+                !loggedIn -> StartDestination.Login
+                else -> StartDestination.Home
             }
         }
     }

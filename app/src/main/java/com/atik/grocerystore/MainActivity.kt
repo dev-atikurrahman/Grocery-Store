@@ -13,18 +13,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.atik.grocerystore.feature.auth.data.preferences.UserPreferences
-import com.atik.grocerystore.navigation.graph.SplashNavHost
+import com.atik.grocerystore.feature.splash.SplashViewModel
+import com.atik.grocerystore.feature.splash.StartDestination
+import com.atik.grocerystore.navigation.graph.AppNavHost
 import com.atik.grocerystore.ui.theme.GroceryStoreTheme
 import com.atik.grocerystore.ui.theme.ThemeMode
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
     private val userPreferences: UserPreferences by inject()
+    private val splashViewModel: SplashViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        installSplashScreen()
 
+        splashScreen.setKeepOnScreenCondition {
+            splashViewModel.startDestination.value is StartDestination.Login
+        }
         setContent {
             val themeMode by userPreferences.themeMode
                 .collectAsStateWithLifecycle(initialValue = ThemeMode.SYSTEM)
@@ -49,7 +56,10 @@ class MainActivity : ComponentActivity() {
                 onDispose {}
             }
 
-            GroceryStoreTheme(themeMode = themeMode) { SplashNavHost() }
+            GroceryStoreTheme(themeMode = themeMode) {
+                val startDestination by splashViewModel.startDestination.collectAsStateWithLifecycle()
+                AppNavHost(startDestination = startDestination)
+            }
         }
     }
 }
