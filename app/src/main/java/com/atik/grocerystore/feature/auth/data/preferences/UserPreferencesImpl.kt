@@ -74,10 +74,7 @@ class UserPreferencesImpl(
         }
     }
 
-    override val themeMode: Flow<ThemeMode> = safeData.map { prefs ->
-        runCatching { ThemeMode.valueOf(prefs[Keys.THEME_MODE] ?: "") }
-            .getOrDefault(ThemeMode.SYSTEM)
-    }
+
 
 
 }
