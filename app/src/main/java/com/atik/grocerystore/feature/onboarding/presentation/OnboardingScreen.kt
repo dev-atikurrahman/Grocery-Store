@@ -63,30 +63,15 @@ fun OnboardingScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .windowInsetsPadding(WindowInsets.safeDrawing)
-            .padding(horizontal = 24.dp),
+            .padding(horizontal = 18.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-            horizontalArrangement = Arrangement.End,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            AnimatedVisibility(visible = !isLastPage) {
-                TextButton(onClick = finishOnboarding) {
-                    MenuText(
-                        text = stringResource(R.string.onboarding_skip),
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                }
-            }
-        }
-
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
         ) { index ->
             val pageOffset =
                 ((pagerState.currentPage - index) + pagerState.currentPageOffsetFraction).absoluteValue
@@ -98,11 +83,16 @@ fun OnboardingScreen(
                 }
             )
         }
-        VerticalSpacer(size = 12.dp)
-        PageIndicator(pageCount = pages.size, pagerState.currentPage)
+        VerticalSpacer(size = 16.dp)
+        PageIndicator(
+            pageCount = pages.size,
+            pagerState.currentPage
+        )
 
+        VerticalSpacer(size = 24.dp)
         OnboardingBottomBar(
             isLastPage = isLastPage,
+            onSkipClick = finishOnboarding,
             onNextClick = {
                 scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
             },

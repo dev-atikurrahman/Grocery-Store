@@ -30,7 +30,7 @@ fun PageIndicator(
         repeat(pageCount) { index ->
 
             val isSelected = index == currentPage
-            val width by animateDpAsState(if (isSelected) 20.dp else 6.dp, label = "dotWidth")
+            val width by animateDpAsState(if (isSelected) 24.dp else 6.dp, label = "dotWidth")
             val color by animateColorAsState(
                 if (isSelected) MaterialTheme.colorScheme.primary
                 else MaterialTheme.colorScheme.outlineVariant,

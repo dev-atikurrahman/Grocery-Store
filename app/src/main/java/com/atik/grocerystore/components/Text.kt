@@ -28,7 +28,7 @@ val Poppins = FontFamily(
     Font(resId = R.font.poppins_bold, weight = FontWeight.Bold),
 )
 
-/* --- Text Style --- */
+/* --- Onboarding screen Text Style --- */
 private object TextStyles {
     // Onboarding hero heading — largest text in the app
     val onboarding = TextStyle(
@@ -386,28 +386,6 @@ fun HintText(
         text = text,
         modifier = modifier,
         style = TextStyles.hint,
-        color = color,
-        maxLines = maxLines,
-        overflow = overflow
-    )
-}
-
-/* ============================================================
- * FIELD / HELPER TEXT (validation messages, strength meters)
- * ============================================================ */
-
-@Composable
-fun HelperText(
-    text: String,
-    modifier: Modifier = Modifier,
-    color: Color = Color.Unspecified,
-    maxLines: Int = Int.MAX_VALUE,
-    overflow: TextOverflow = TextOverflow.Clip
-) {
-    Text(
-        text = text,
-        modifier = modifier,
-        style = TextStyles.helper,
         color = color,
         maxLines = maxLines,
         overflow = overflow
