@@ -1,7 +1,5 @@
 package com.atik.grocerystore.components
 
-import android.graphics.fonts.FontStyle
-import androidx.annotation.Size
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme

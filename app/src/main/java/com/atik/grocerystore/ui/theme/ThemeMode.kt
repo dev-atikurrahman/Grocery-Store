@@ -1,3 +1,3 @@
 package com.atik.grocerystore.ui.theme
 
-enum class ThemeMode { SYSTEM, LIGHT, DARK}
+enum class ThemeMode { SYSTEM, LIGHT, DARK }

@@ -1,11 +1,8 @@
 package com.atik.grocerystore.feature.auth.data.preferences
 
-import com.atik.grocerystore.ui.theme.ThemeMode
 import kotlinx.coroutines.flow.Flow
 
 interface UserPreferences {
-    val isOnboardingCompleted: Flow<Boolean>
-    suspend fun setOnboardingCompleted(completed: Boolean)
     val isLoggedIn: Flow<Boolean>
     suspend fun setLoggedIn(loggedIn: Boolean)
     val authToken: Flow<String?>
