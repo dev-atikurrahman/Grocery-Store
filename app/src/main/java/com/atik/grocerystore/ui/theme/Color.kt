@@ -63,28 +63,35 @@ val InverseOnSurfaceLight = Color(0xFFEEF2EC)
 val InversePrimaryLight = Color(0xFFC0D0C1)
 
 
-
 // =====================================================
 // GLASSMORPHISM COLORS
 // =====================================================
 
-// Glass Background
-val GlassBase = Color(0xFF404C42)
-val GlassBackground = Color(0x4D404C42)    // 30% opacity
+val GlassFill = Color(0x4D404C42)    // 30% opacity
+val GlassBackdropFallback = GlassFill
 
-// Glass Layers
-val GlassTint = Color(0x4DBCDBDA)          // 30% opacity
-val GlassDepth = Color(0x14B3BAC2)         // 8% opacity
 
-// Glass Highlights
-val GlassHighlight = Color(0x996C7B6E)     // 60% opacity
-val GlassHighlightSoft = Color(0x4D6C7B6E) // 30% opacity
+// Card border / light (Figma Light -45°, 50%)
+val GlassLightStrong = Color(0xFF8C978F)             // 50% white (top-left)
+val GlassLightFaint = Color(0x0DFFFFFF)              // 5% white  (middle)
+val GlassLightEdge = Color(0xFF67706A)               // 15% white (bottom-right)
 
-// Glass Border
-val GlassBorder = Color(0x339EB0BC)        // 20% opacity
+// Pill (email/password field)
+val GlassPillFill = Color(0x14FFFFFF)                // 8% white
+val GlassPillBorder = Color(0x26FFFFFF)              // 15% white
+val GlassIconCircle = Color(0x26FFFFFF)              // @ / key icon
+
+val GlassButtonFill = Color(0x33FFFFFF)              // 20% white
+
+// Auth Text colors
+val GlassTextPrimary = Color(0xFFFFFFFF)
+val GlassTextHint = Color(0xB3FFFFFF)                // 70%
+val GlassTextFieldContainer = Color(0x66404C42)      // 40%
+val GlassTextFieldContainerUnFocus = Color(0x59404C42)      // 70%
+val ErrorTextRed = Color(0xFFB91C1C)                // 70%
+val GlassTextDisclaimer = Color(0x99FFFFFF)          // 60%
 val GlassBorderLight = Color(0x66FFFFFF)   // 40% opacity
 
-// Glass Shadow
 val GlassShadow = Color(0x66000000)        // 40% opacity
 
 

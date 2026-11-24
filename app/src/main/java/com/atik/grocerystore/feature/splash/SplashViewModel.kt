@@ -1,21 +1,17 @@
 package com.atik.grocerystore.feature.splash
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.atik.grocerystore.feature.auth.data.preferences.UserPreferences
-import com.atik.grocerystore.feature.auth.presentation.login.LoginViewModel.Companion.AUTH_TAG
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 
 sealed interface StartDestination {
     data object Loading : StartDestination
-    data object Onboarding : StartDestination
     data object Login : StartDestination
     data object Home : StartDestination
 }
@@ -29,14 +25,9 @@ class SplashViewModel(
     init {
         viewModelScope.launch {
             userPreferences.clearSessionIfNotRemembered()
-            val onBoardingDone = userPreferences.isOnboardingCompleted.first()
-            val loggedIn = userPreferences.isLoggedIn.first()
-
-            _startDestination.value = when {
-                !onBoardingDone -> StartDestination.Onboarding
-                !loggedIn -> StartDestination.Login
-                else -> StartDestination.Home
-            }
+            _startDestination.value =
+                if (userPreferences.isLoggedIn.first()) StartDestination.Home
+                else StartDestination.Login
         }
     }
 

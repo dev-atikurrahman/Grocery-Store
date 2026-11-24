@@ -1,7 +1,5 @@
 package com.atik.grocerystore.components
 
-import android.graphics.fonts.FontStyle
-import androidx.annotation.Size
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -39,7 +37,7 @@ private object TextStyles {
 
     // Auth screen heading — "Welcome Back", "Registration"
     val authHeading = TextStyle(
-        fontSize = 28.sp,
+        fontSize = 22.sp,
         fontWeight = FontWeight.Medium,
         fontFamily = Poppins
     )

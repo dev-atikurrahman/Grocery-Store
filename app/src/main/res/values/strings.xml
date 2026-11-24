@@ -1,15 +1,10 @@
 <resources>
     <string name="app_name">Grocery Store</string>
 
-    <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_next">Next</string>
-    <string name="get_started">Get Started</string>
+    <!-- Login Screen string res -->
+    <string name="loading_message">Loading your Grocery Store</string>
+    <string name="e_mail_address">e-mail address</string>
+    <string name="password">password</string>
 
-    <string name="onboarding_title_1">Manage your store with ease Manage your store with ease</string>
-    <string name="onboarding_desc_1">Keep your grocery business organized and manage everything in one place. Keep your grocery business organized and manage everything in one place.</string>
-    <string name="onboarding_title_2">Track sales and manage inventory Manage your store with ease</string>
-    <string name="onboarding_desc_2">Monitor your daily sales, products and stock levels effortlessly.Keep your grocery business organized and manage everything in one place.</string>
-    <string name="onboarding_title_3">Stay in control of your business Manage your store with ease</string>
-    <string name="onboarding_desc_3">Get insights into your business and make smarter decisions.Keep your grocery business organized and manage everything in one place.</string>
 
 </resources>
