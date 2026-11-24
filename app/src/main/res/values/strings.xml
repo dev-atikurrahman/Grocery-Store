@@ -3,6 +3,8 @@
 
     <!-- Login Screen string res -->
     <string name="loading_message">Loading your Grocery Store</string>
+    <string name="e_mail_address">e-mail address</string>
+    <string name="password">password</string>
 
 
 </resources>

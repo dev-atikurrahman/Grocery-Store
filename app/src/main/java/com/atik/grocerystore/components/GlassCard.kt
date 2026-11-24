@@ -37,7 +37,7 @@ object GlassDefaults {
     val Blur = 24.dp                 // Figma "Frost"
     val RefractionHeight = 12.dp     // Figma "Refraction"
     val RefractionAmount = 32.dp
-    val ContentPadding = PaddingValues(horizontal = 24.dp, vertical = 28.dp)
+    val ContentPadding = PaddingValues(horizontal = 16.dp, vertical = 18.dp)
     val Tint = GlassFill             // 404C42 @ 30%
     val HighlightColor = GlassLightStrong
     const val HighlightAlpha = 0.8f

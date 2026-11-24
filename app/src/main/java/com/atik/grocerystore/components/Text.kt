@@ -37,7 +37,7 @@ private object TextStyles {
 
     // Auth screen heading — "Welcome Back", "Registration"
     val authHeading = TextStyle(
-        fontSize = 28.sp,
+        fontSize = 22.sp,
         fontWeight = FontWeight.Medium,
         fontFamily = Poppins
     )
