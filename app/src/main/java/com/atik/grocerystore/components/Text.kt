@@ -19,11 +19,11 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.atik.grocerystore.R
 
-val Poppins = FontFamily(
-    Font(resId = R.font.poppins_regular, weight = FontWeight.Normal),
-    Font(resId = R.font.poppins_medium, weight = FontWeight.Medium),
-    Font(resId = R.font.poppins_semibold, weight = FontWeight.SemiBold),
-    Font(resId = R.font.poppins_bold, weight = FontWeight.Bold),
+val PlushJakarta = FontFamily(
+    Font(resId = R.font.regular_font, weight = FontWeight.Normal),
+    Font(resId = R.font.medium_font, weight = FontWeight.Medium),
+    Font(resId = R.font.semibold_font, weight = FontWeight.SemiBold),
+    Font(resId = R.font.bold_font, weight = FontWeight.Bold),
 )
 
 /* --- Onboarding screen Text Style --- */
@@ -32,14 +32,14 @@ private object TextStyles {
     val onboarding = TextStyle(
         fontSize = 36.sp,
         fontWeight = FontWeight.SemiBold,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Auth screen heading — "Welcome Back", "Registration"
     val authHeading = TextStyle(
-        fontSize = 22.sp,
+        fontSize = 18.sp,
         fontWeight = FontWeight.Medium,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Generic section heading — top bars, screen titles
@@ -52,28 +52,28 @@ private object TextStyles {
     val title = TextStyle(
         fontSize = 18.sp,
         fontWeight = FontWeight.Medium,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Auth body copy — "Sign in to access all the smart features"
     val authBody = TextStyle(
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Auth secondary emphasis — "Forgot Password?" style labels
     val authBodyMedium = TextStyle(
         fontSize = 16.sp,
         fontWeight = FontWeight.Medium,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Generic body — item titles/descriptions in cards
     val body = TextStyle(
         fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Button label
@@ -86,33 +86,33 @@ private object TextStyles {
     val price = TextStyle(
         fontSize = 18.sp,
         fontWeight = FontWeight.Medium,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Caption/description — smallest readable body text
     val caption = TextStyle(
         fontSize = 14.sp,
         fontWeight = FontWeight.Normal,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
     val menu = TextStyle(
         fontSize = 14.sp,
         fontWeight = FontWeight.Medium,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Hint/placeholder-adjacent text — same scale as caption
     val hint = TextStyle(
-        fontSize = 14.sp,
+        fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 
     // Smallest text — password strength meter, field helper text
     val helper = TextStyle(
         fontSize = 12.sp,
         fontWeight = FontWeight.Normal,
-        fontFamily = Poppins
+        fontFamily = PlushJakarta
     )
 }
 

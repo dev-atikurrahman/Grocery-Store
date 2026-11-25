@@ -63,36 +63,36 @@ val InverseOnSurfaceLight = Color(0xFFEEF2EC)
 val InversePrimaryLight = Color(0xFFC0D0C1)
 
 
-// =====================================================
 // GLASSMORPHISM COLORS
-// =====================================================
 
-val GlassFill = Color(0x4D404C42)    // 30% opacity
+
+val GlassFill = Color(0x66404C42)    // 30% 
 val GlassBackdropFallback = GlassFill
 
 
 // Card border / light (Figma Light -45°, 50%)
-val GlassLightStrong = Color(0xFF8C978F)             // 50% white (top-left)
-val GlassLightFaint = Color(0x0DFFFFFF)              // 5% white  (middle)
-val GlassLightEdge = Color(0xFF67706A)               // 15% white (bottom-right)
+val GlassLightStrong = Color(0xFF8C978F)
+val GlassLightFaint = Color(0x0DFFFFFF)
+val GlassLightEdge = Color(0xFF67706A)
 
 // Pill (email/password field)
-val GlassPillFill = Color(0x14FFFFFF)                // 8% white
-val GlassPillBorder = Color(0x26FFFFFF)              // 15% white
-val GlassIconCircle = Color(0x26FFFFFF)              // @ / key icon
+val GlassPillFill = Color(0x80404C42)
+val GlassPillBorder = Color(0x26FFFFFF)
+val GlassLeadingIcon = Color(0xCCF5F5F5)
+val GlassIconCircle = Color(0x269EB0BC)
 
-val GlassButtonFill = Color(0x33FFFFFF)              // 20% white
+val GlassButtonFill = Color(0x33FFFFFF)
 
 // Auth Text colors
-val GlassTextPrimary = Color(0xFFFFFFFF)
-val GlassTextHint = Color(0xB3FFFFFF)                // 70%
-val GlassTextFieldContainer = Color(0x66404C42)      // 40%
-val GlassTextFieldContainerUnFocus = Color(0x59404C42)      // 70%
-val ErrorTextRed = Color(0xFFB91C1C)                // 70%
+val GlassTextPrimary = Color(0xCCF5F5F5)
+val GlassTextHint = Color(0xB3FFFFFF)            
+val GlassTextFieldContainer = Color(0x66404C42)      
+val GlassTextFieldContainerUnFocus = Color(0x59404C42)  
+val ErrorTextRed = Color(0xFFE57373)
 val GlassTextDisclaimer = Color(0x99FFFFFF)          // 60%
-val GlassBorderLight = Color(0x66FFFFFF)   // 40% opacity
+val FieldHighlight = Color(0x807E8A82)    
 
-val GlassShadow = Color(0x66000000)        // 40% opacity
+val GlassShadow = Color(0x66000000)         
 
 
 // =====================================================

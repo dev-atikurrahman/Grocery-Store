@@ -5,6 +5,13 @@
     <string name="loading_message">Loading your Grocery Store</string>
     <string name="e_mail_address">e-mail address</string>
     <string name="password">password</string>
+    <string name="disclaimer_text">This area is restricted to authorized personnel only. All login attempts, sessions, and data transactions are monitored and logged. Unauthorized access or use is strictly prohibited and may result in legal action.</string>
+
+    <!-- BottomBar string res -->
+    <string name="home">Home</string>
+    <string name="sales">Sales</string>
+    <string name="products">Products</string>
+    <string name="customers">Customers</string>
 
 
 </resources>

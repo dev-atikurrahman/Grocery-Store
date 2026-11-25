@@ -1,12 +1,12 @@
 package com.atik.grocerystore.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -40,8 +40,9 @@ object GlassDefaults {
     val ContentPadding = PaddingValues(horizontal = 16.dp, vertical = 18.dp)
     val Tint = GlassFill             // 404C42 @ 30%
     val HighlightColor = GlassLightStrong
-    const val HighlightAlpha = 0.8f
+    const val highlightAlpha = 0.8f
     const val HighlightAngle = 45f
+    const val HighlightFalloff = 3f
 }
 
 @Composable
@@ -55,14 +56,17 @@ fun GlassCard(
     depthEffect: Boolean = true,
     tint: Color = GlassDefaults.Tint,
     highlightColor: Color = GlassDefaults.HighlightColor,
-    highlightAlpha: Float = GlassDefaults.HighlightAlpha,
+    highlightWidth: Dp = 1.dp,
+    highlightAlpha: Float = GlassDefaults.highlightAlpha,
     highlightAngle: Float = GlassDefaults.HighlightAngle,
+    highlightFalloff: Float = GlassDefaults.HighlightFalloff,
     contentPadding: PaddingValues = GlassDefaults.ContentPadding,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.(cardBackdrop: Backdrop) -> Unit
 ) {
     val shape = RoundedCornerShape(cornerRadius)
     val safeRefractionHeight = refractionHeight.coerceIn(0.dp, cornerRadius)
+    val cardBackdrop = rememberLayerBackdrop()
 
     Column(
         modifier = modifier
@@ -80,22 +84,23 @@ fun GlassCard(
                 },
                 highlight = {
                     Highlight.Ambient.copy(
-                        width = 1.dp,
+                        width = highlightWidth,
                         blurRadius = 2.dp,
                         alpha = highlightAlpha,
                         style = HighlightStyle.Default(
                             color = highlightColor,
                             blendMode = BlendMode.Plus,
                             angle = highlightAngle,
-                            falloff = 1f
+                            falloff = highlightFalloff
                         )
                     )
                 },
-                onDrawSurface = { drawRect(tint) }
+                onDrawSurface = { drawRect(tint) },
+                exportedBackdrop = cardBackdrop
             )
             .padding(contentPadding),
         verticalArrangement = verticalArrangement,
-        content = content
+        content = { content(cardBackdrop) }
     )
 }
 
