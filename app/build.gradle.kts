@@ -43,6 +43,7 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
 
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.ui.unit)
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.compose.ui)

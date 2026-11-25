@@ -8,5 +8,10 @@ sealed class Routes(val route: String) {
 
     data object Login : Routes(route = "login")
 
-    data object Home : Routes(route = "home")
+    /** Home graph*/
+    data object Home : Routes(route = "home_screen")
+    data object Sales : Routes(route = "sales_screen")
+    data object Products : Routes(route = "products_screen")
+    data object Customers : Routes(route = "customers_screen")
+
 }

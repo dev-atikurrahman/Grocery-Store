@@ -2,6 +2,7 @@ package com.atik.grocerystore.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,9 @@ import androidx.compose.foundation.text.input.KeyboardActionHandler
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.TextObfuscationMode
+import androidx.compose.foundation.text.input.clearText
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.SecureTextField
@@ -30,20 +34,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.atik.grocerystore.ui.theme.ErrorTextRed
+import com.atik.grocerystore.ui.theme.FieldHighlight
 import com.atik.grocerystore.ui.theme.GlassBackdropFallback
 import com.atik.grocerystore.ui.theme.GlassIconCircle
+import com.atik.grocerystore.ui.theme.GlassLeadingIcon
 import com.atik.grocerystore.ui.theme.GlassPillFill
 import com.atik.grocerystore.ui.theme.GlassTextHint
 import com.atik.grocerystore.ui.theme.GlassTextPrimary
 import com.kyant.backdrop.Backdrop
-import com.kyant.backdrop.backdrops.layerBackdrop
-import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 
 private val FieldShape = RoundedCornerShape(50.dp)
 
@@ -72,10 +78,10 @@ private fun glassTextFieldColors(): TextFieldColors = TextFieldDefaults.colors(
     errorCursorColor = ErrorTextRed,
 
     focusedLeadingIconColor = GlassTextPrimary,
-    unfocusedLeadingIconColor = GlassTextPrimary,
+    unfocusedLeadingIconColor = GlassLeadingIcon,
     errorLeadingIconColor = ErrorTextRed,
     focusedTrailingIconColor = GlassTextPrimary,
-    unfocusedTrailingIconColor = GlassTextHint,
+    unfocusedTrailingIconColor = GlassLeadingIcon,
     errorTrailingIconColor = ErrorTextRed,
 
     focusedPlaceholderColor = GlassTextHint,
@@ -83,14 +89,15 @@ private fun glassTextFieldColors(): TextFieldColors = TextFieldDefaults.colors(
     errorPlaceholderColor = ErrorTextRed,
 )
 
-private val FieldTextStyle = TextStyle(fontFamily = Poppins, fontSize = 16.sp)
+private val FieldTextStyle = TextStyle(fontFamily = PlushJakarta, fontSize = 16.sp)
 
 /** Leading icon */
 @Composable
-private fun FieldLeadingIcon(icon: ImageVector) {
+private fun FieldLeadingIcon(icon: ImageVector, startPadding: Dp = 8.dp) {
     Box(
         modifier = Modifier
-            .size(36.dp)
+            .padding(start = startPadding)
+            .size(40.dp)
             .clip(CircleShape)
             .background(GlassIconCircle),
         contentAlignment = Alignment.Center
@@ -104,15 +111,9 @@ private fun FieldContainer(
     backdrop: Backdrop?,
     errorText: String?,
     modifier: Modifier,
-    fallbackColor: Color = GlassBackdropFallback,
     field: @Composable () -> Unit
 ) {
-    val backdrop2 = rememberLayerBackdrop {
-        drawRect(fallbackColor)
-        drawContent()
-    }
-
-    Box(modifier = modifier.fillMaxWidth()) {
+    Column(modifier = modifier.fillMaxWidth()) {
         if (backdrop != null) {
             GlassCard(
                 backdrop = backdrop,
@@ -123,6 +124,11 @@ private fun FieldContainer(
                 refractionHeight = 8.dp,
                 refractionAmount = 12.dp,
                 tint = GlassPillFill,
+                highlightWidth = 0.50.dp,
+                highlightColor = FieldHighlight,
+                highlightAngle = 45f,
+                highlightFalloff = 1f,
+                depthEffect = true,
                 contentPadding = PaddingValues(0.dp)
             ) { field() }
         } else {
@@ -131,9 +137,12 @@ private fun FieldContainer(
 
         if (errorText != null) {
             Text(
-                text = errorText,
+                text = "* $errorText",
                 color = ErrorTextRed,
-                modifier = Modifier.padding(start = 20.dp, top = 4.dp)
+                style = TextStyle(
+                    fontSize = 12.sp
+                ),
+                modifier = Modifier.padding(start = 20.dp, top = 6.dp)
             )
         }
     }
@@ -150,7 +159,8 @@ fun AppTextField(
     keyboardType: KeyboardType = KeyboardType.Email,
     imeAction: ImeAction = ImeAction.Next,
     onImeAction: () -> Unit = {},
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    showClearButton: Boolean = true
 ) {
 
     FieldContainer(backdrop = backdrop, errorText, modifier) {
@@ -162,6 +172,16 @@ fun AppTextField(
             lineLimits = TextFieldLineLimits.SingleLine,
             placeholder = { HintText(text = placeholder, color = GlassTextHint) },
             leadingIcon = leadingIcon?.let { icon -> { FieldLeadingIcon(icon) } },
+            trailingIcon = if (showClearButton && enabled && state.text.isNotEmpty()) {
+                {
+                    IconButton(onClick = { state.clearText() }) {
+                        Icon(
+                            imageVector = Icons.Rounded.Close,
+                            contentDescription = "Clear text"
+                        )
+                    }
+                }
+            } else null,
             isError = errorText != null,
             keyboardOptions = KeyboardOptions(
                 keyboardType = keyboardType,
@@ -193,37 +213,59 @@ fun AppPasswordField(
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
 
     FieldContainer(backdrop = backdrop, errorText, modifier) {
-        SecureTextField(
-            state = state,
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            textStyle = FieldTextStyle,
-            placeholder = { HintText(text = placeholder, color = GlassTextHint) },
-            leadingIcon = leadingIcon?.let { icon -> { FieldLeadingIcon(icon) } },
-            trailingIcon = {
-                IconButton(onClick = { passwordHidden = !passwordHidden }) {
-                    Icon(
-                        imageVector = if (passwordHidden) showIcon else hideIcon,
-                        contentDescription = if (passwordHidden) "Show password" else "Hide password"
-                    )
-                }
-            },
-            isError = errorText != null,
-            textObfuscationMode = if (passwordHidden) {
-                TextObfuscationMode.RevealLastTyped
-            } else {
-                TextObfuscationMode.Visible
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = if (passwordHidden) KeyboardType.Password else KeyboardType.PasswordVisible,
-                imeAction = imeAction,
-                autoCorrectEnabled = false
-            ),
-            onKeyboardAction = KeyboardActionHandler { onImeAction() },
-            shape = FieldShape,
-            colors = glassTextFieldColors()
-        )
+        if (LocalInspectionMode.current) {
+            TextField(
+                state = state,
+                modifier = Modifier.fillMaxWidth(),
+                enabled = enabled,
+                textStyle = FieldTextStyle,
+                lineLimits = TextFieldLineLimits.SingleLine,
+                placeholder = { HintText(text = placeholder, color = GlassTextHint) },
+                leadingIcon = leadingIcon?.let { icon -> { FieldLeadingIcon(icon) } },
+                trailingIcon = {
+                    IconButton(onClick = { passwordHidden = !passwordHidden }) {
+                        Icon(
+                            imageVector = if (passwordHidden) showIcon else hideIcon,
+                            contentDescription = if (passwordHidden) "Show password" else "Hide password"
+                        )
+                    }
+                },
+                isError = errorText != null,
+                shape = FieldShape,
+                colors = glassTextFieldColors()
+            )
+        } else {
+            SecureTextField(
+                state = state,
+                modifier = Modifier.fillMaxWidth(),
+                enabled = enabled,
+                textStyle = FieldTextStyle,
+                placeholder = { HintText(text = placeholder, color = GlassTextHint) },
+                leadingIcon = leadingIcon?.let { icon -> { FieldLeadingIcon(icon) } },
+                trailingIcon = {
+                    IconButton(onClick = { passwordHidden = !passwordHidden }) {
+                        Icon(
+                            imageVector = if (passwordHidden) showIcon else hideIcon,
+                            contentDescription = if (passwordHidden) "Show password" else "Hide password"
+                        )
+                    }
+                },
+                isError = errorText != null,
+                textObfuscationMode = if (passwordHidden) {
+                    TextObfuscationMode.RevealLastTyped
+                } else {
+                    TextObfuscationMode.Visible
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = if (passwordHidden) KeyboardType.Password else KeyboardType.PasswordVisible,
+                    imeAction = imeAction,
+                    autoCorrectEnabled = false
+                ),
+                onKeyboardAction = KeyboardActionHandler { onImeAction() },
+                shape = FieldShape,
+                colors = glassTextFieldColors()
+            )
+        }
     }
-
 }
 
