@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         )
 
         splashScreen.setKeepOnScreenCondition {
-            splashViewModel.startDestination.value is StartDestination.Login
+            splashViewModel.startDestination.value is StartDestination.Loading
         }
         setContent {
             GroceryStoreTheme {

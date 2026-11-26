@@ -35,7 +35,7 @@ fun NavGraphBuilder.authNavGraph(
                         "onLoginSuccess: navigating to HOME_GRAPH_ROUTE, current backstack=${navController.currentBackStackEntry?.destination?.route}"
                     )
                     navController.navigate(HOME_GRAPH_ROUTE) {
-                        popUpTo(AUTH_GRAPH_ROUTE) { inclusive = true }
+                        popUpTo(AUTH_GRAPH_ROUTE) { inclusive = false  }
                         launchSingleTop = true
                     }
                     Log.d(

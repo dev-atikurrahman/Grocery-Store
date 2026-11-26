@@ -124,7 +124,7 @@ fun AppText(
     color: Color,
     fontSize: TextUnit = TextUnit.Unspecified,
     fontWeight: FontWeight? = null,
-    fontFamily: FontFamily? = null,
+    fontFamily: FontFamily? = PlushJakarta,
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration? = null,
     textAlign: TextAlign? = null,

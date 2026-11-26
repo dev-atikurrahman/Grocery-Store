@@ -7,6 +7,7 @@ val BrandPrimary = Color(0xFF404C42)       // Main brand color
 val BrandSecondary = Color(0xFF6C7B6E)     // Sage green
 val BrandTertiary = Color(0xFF9EB0A0)      // Soft sage
 val BrandBackground = Color(0xFF101713)    // Deep forest charcoal
+val Black = Color(0xFF000000)
 
 
 // =====================================================
@@ -64,11 +65,8 @@ val InversePrimaryLight = Color(0xFFC0D0C1)
 
 
 // GLASSMORPHISM COLORS
-
-
-val GlassFill = Color(0x66404C42)    // 30% 
+val GlassFill = Color(0x66404C42)
 val GlassBackdropFallback = GlassFill
-
 
 // Card border / light (Figma Light -45°, 50%)
 val GlassLightStrong = Color(0xFF8C978F)
@@ -81,18 +79,18 @@ val GlassPillBorder = Color(0x26FFFFFF)
 val GlassLeadingIcon = Color(0xCCF5F5F5)
 val GlassIconCircle = Color(0x269EB0BC)
 
-val GlassButtonFill = Color(0x33FFFFFF)
-
 // Auth Text colors
-val GlassTextPrimary = Color(0xCCF5F5F5)
+val GlassTextPrimary = Color(0xB3F5F5F5)
 val GlassTextHint = Color(0xB3FFFFFF)            
-val GlassTextFieldContainer = Color(0x66404C42)      
+val GlassTextFieldContainer = Color(0x66404C42)
 val GlassTextFieldContainerUnFocus = Color(0x59404C42)  
 val ErrorTextRed = Color(0xFFE57373)
-val GlassTextDisclaimer = Color(0x99FFFFFF)          // 60%
+val GlassTextDisclaimer = Color(0x99FFFFFF)
 val FieldHighlight = Color(0x807E8A82)    
 
-val GlassShadow = Color(0x66000000)         
+// Bottom bar colors
+val BottomBarTint = Color(0x40404C42)
+val ActiveIndicator = Color(0x1FFFFFFF)
 
 
 // =====================================================

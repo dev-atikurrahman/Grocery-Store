@@ -36,6 +36,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
@@ -89,7 +90,7 @@ private fun glassTextFieldColors(): TextFieldColors = TextFieldDefaults.colors(
     errorPlaceholderColor = ErrorTextRed,
 )
 
-private val FieldTextStyle = TextStyle(fontFamily = PlushJakarta, fontSize = 16.sp)
+private val FieldTextStyle = TextStyle(fontFamily = PlushJakarta, fontSize = 16.sp, fontWeight = FontWeight.Medium)
 
 /** Leading icon */
 @Composable
@@ -182,6 +183,7 @@ fun AppTextField(
                     }
                 }
             } else null,
+            contentPadding = TextFieldDefaults.contentPaddingWithoutLabel(start = 20.dp),
             isError = errorText != null,
             keyboardOptions = KeyboardOptions(
                 keyboardType = keyboardType,
@@ -230,6 +232,7 @@ fun AppPasswordField(
                         )
                     }
                 },
+                contentPadding = TextFieldDefaults.contentPaddingWithoutLabel(start = 20.dp),
                 isError = errorText != null,
                 shape = FieldShape,
                 colors = glassTextFieldColors()
@@ -250,6 +253,7 @@ fun AppPasswordField(
                         )
                     }
                 },
+                contentPadding = TextFieldDefaults.contentPaddingWithoutLabel(start = 20.dp),
                 isError = errorText != null,
                 textObfuscationMode = if (passwordHidden) {
                     TextObfuscationMode.RevealLastTyped

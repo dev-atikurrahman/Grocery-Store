@@ -33,10 +33,10 @@ import com.kyant.backdrop.highlight.HighlightStyle
 
 
 object GlassDefaults {
-    val CornerRadius = 36.dp
-    val Blur = 24.dp                 // Figma "Frost"
-    val RefractionHeight = 12.dp     // Figma "Refraction"
-    val RefractionAmount = 32.dp
+    val CornerRadius = 32.dp
+    val Blur = 24.dp
+    val RefractionHeight = 12.dp
+    val RefractionAmount = 8.dp
     val ContentPadding = PaddingValues(horizontal = 16.dp, vertical = 18.dp)
     val Tint = GlassFill             // 404C42 @ 30%
     val HighlightColor = GlassLightStrong
@@ -56,7 +56,7 @@ fun GlassCard(
     depthEffect: Boolean = true,
     tint: Color = GlassDefaults.Tint,
     highlightColor: Color = GlassDefaults.HighlightColor,
-    highlightWidth: Dp = 1.dp,
+    highlightWidth: Dp = 0.75.dp,
     highlightAlpha: Float = GlassDefaults.highlightAlpha,
     highlightAngle: Float = GlassDefaults.HighlightAngle,
     highlightFalloff: Float = GlassDefaults.HighlightFalloff,
